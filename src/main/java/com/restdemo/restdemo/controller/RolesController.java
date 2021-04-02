@@ -1,7 +1,7 @@
 
 /*
  * we create controller class
- * DepartmentController
+ * RolesController
  * this class provide method which is used in Api
  * Get method,Post,Put and delete 
  * */
@@ -23,61 +23,55 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.restdemo.restdemo.entities.Department;
-
-import com.restdemo.restdemo.services.DepartmentService;
-
+import com.restdemo.restdemo.entities.Roles;
+import com.restdemo.restdemo.services.IRolesService;
 
 @RestController
 @RequestMapping("/api")
-public class DepartmentController {
-	
-	
+public class RolesController {
+
 	@Autowired
-	private DepartmentService departmentService;
+	private IRolesService iRolesService;
 	
-	@GetMapping("/deptname")
-	  public List<Department> getallDepartment() {
-	    return this.departmentService.getallDepartments();
+	@GetMapping("/allRoles")
+	  public List<Roles> getallRoles() {
+	    return this.iRolesService.getallRoles();
 	  }
 	
-	@GetMapping("/deptname/{id}")
-	public ResponseEntity<Department> get(@PathVariable Integer id) {
+	@GetMapping("/Roles/{rid}")
+	public ResponseEntity<Roles> get(@PathVariable Integer rid) {
         try {
-        	Department department = departmentService.getDepartmentsbyid(id);
-            return new ResponseEntity<Department>(department, HttpStatus.OK);
+            Roles roles = iRolesService.getRolesByrid(rid);
+            return new ResponseEntity<Roles>(roles, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<Department>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Roles>(HttpStatus.NOT_FOUND);
         }
     }
 	
-	@PostMapping("/deptname")
-	public Department addDepartment( @RequestBody Department department) {
-		return this.departmentService.addDepartment(department);
+	@PostMapping("/Roles")
+	public Roles addRoles( @RequestBody Roles roles) {
+		return this.iRolesService.addRoles(roles);
 	}
 	
-	
-	@PutMapping("/deptname/{id}")
-	public ResponseEntity<?> updateDepartment(@RequestBody Department department, @PathVariable Integer id) {
+	@PutMapping("/Roles/{rid}")
+	public ResponseEntity<?> updateRoles(@RequestBody Roles roles, @PathVariable Integer rid) {
         try {
-        	Department existDepartment = departmentService.getDepartmentsbyid(id);
-        	department.setDepid(id);            
-        	departmentService.addDepartment(department);
+        	Roles existroles = iRolesService.getRolesByrid(rid);
+        	roles.setRid(rid);            
+        	iRolesService.addRoles(roles);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 	
-	@DeleteMapping("/deptname/{id}")
-	public ResponseEntity<HttpStatus> deleteUser(@PathVariable String id){
+	@DeleteMapping("/Roles/{rid}")
+	public ResponseEntity<HttpStatus> deleteRoles(@PathVariable String rid){
 		try {
-			this.departmentService.deleteDepartment(Long.parseLong(id));
+			this.iRolesService.deleteRoles(Long.parseLong(rid));
 			return new ResponseEntity<>(HttpStatus.OK);
 		}catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
 }

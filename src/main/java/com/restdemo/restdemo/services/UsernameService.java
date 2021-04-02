@@ -1,7 +1,7 @@
 
 /*
- * we create UserService
- * provide all method which used in controller  
+ * we create UserService interface
+ * provide all method which used in UserController  
  * */
 
 package com.restdemo.restdemo.services;
@@ -12,9 +12,11 @@ import com.restdemo.restdemo.entities.User;
 
 public interface UsernameService {
 	
-	public List<User> getUsers();
+	public List<User> getallUsers();
 	
-	public User getUsers(long id);
+	public User getUsersbyid(long id);
+	
+	public List<User> getallUsersbystatus(Boolean status);
 	
 	public User addUser(User user);
 	

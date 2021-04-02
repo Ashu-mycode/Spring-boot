@@ -1,7 +1,7 @@
 
 /*
- * we create DepartmentService
- * provide all method which used in controller  
+ * we create DepartmentService Interface
+ * provide all method which used in DepartmentController  
  * */
 
 
@@ -14,9 +14,9 @@ import com.restdemo.restdemo.entities.Department;
 
 public interface DepartmentService {
 
-    public List<Department> getDepartments();
+    public List<Department> getallDepartments();
 	
-	public Department getDepartments(long id);
+	public Department getDepartmentsbyid(long id);
 	
 	public Department addDepartment(Department department);
 	

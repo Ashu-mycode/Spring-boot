@@ -2,7 +2,7 @@
 /*
  * DepartmentServiceImp class
  * implemented by DepartmentService
- * All method implementation  
+ * All method implementation of DepartmentService 
  * */
 
 
@@ -26,16 +26,16 @@ public class DepartmentServiceimp implements DepartmentService {
 		
 	}
 
-	@Override
-	public List<Department> getDepartments() {
-		return departmentRepository.findAll();
-		
-	}
+     @Override
+ 	public List<Department> getallDepartments() {
+ 		return departmentRepository.findAll();
+ 		
+ 	}
 
-	@Override
-	public Department getDepartments(long id) {
-		return departmentRepository.findById(id);
-	}
+     @Override
+ 	public Department getDepartmentsbyid(long id) {
+ 		return departmentRepository.findById(id);
+ 	}
 
 	@Override
 	public Department addDepartment(Department department) {

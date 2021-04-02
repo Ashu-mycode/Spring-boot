@@ -2,7 +2,7 @@
 /*
  * UserServiceImp class
  * implemented by UserService
- * All method implementation  
+ * All method implementation of UserService 
  * */
 
 
@@ -34,13 +34,13 @@ public class UsernameServiceimp implements UsernameService {
 	}
 	
 	@Override
-	public List<User> getUsers(){
+	public List<User> getallUsers(){
 		return userRepository.findAll();
 		
 	}
 	
 	@Override
-	public User getUsers(long id) {
+	public User getUsersbyid(long id) {
 		return userRepository.findById(id);
 	}
 	
@@ -63,6 +63,11 @@ public class UsernameServiceimp implements UsernameService {
 		User entity = userRepository.getOne(parselong);
 		userRepository.delete(entity);
 		
+	}
+
+	@Override
+	public List<User> getallUsersbystatus(Boolean status) {
+		return userRepository.findAllByStatus(status);
 	}
 
 }

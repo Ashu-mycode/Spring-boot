@@ -1,0 +1,5 @@
+                         Information about project structure
+
+1.This Project Src folder contain Packages which is used in project.
+2.We have different different package name which inside related class . 
+3.SecondDb package for accessing second data(and Inside again define more package which is used). 

@@ -1,7 +1,7 @@
 
 /*
  * we create UserRepository interface using JPA
- * provide all features of mapping 
+ * provide all features of CRUD Operations of UserController
  * */
 
 
@@ -22,6 +22,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	List<User> findAll();
 
 	User findById(long id);
+	
+    List<User> findAllByStatus(Boolean status);
 
 	User save(User user);
 

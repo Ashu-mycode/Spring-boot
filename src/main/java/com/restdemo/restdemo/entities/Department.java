@@ -1,6 +1,7 @@
 
-/*we create entity in database
- * entity Department
+/* we create entity in database
+ * entity class Department 
+ * table name departement
  * */
 
 package com.restdemo.restdemo.entities;

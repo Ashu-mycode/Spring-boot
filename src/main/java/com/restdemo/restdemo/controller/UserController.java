@@ -42,8 +42,8 @@ public class UserController {
 	
 	
 	@GetMapping("/username")
-	  public List<User> getUser() {
-	    return this.usernameService.getUsers();
+	  public List<User> getallUser() {
+	    return this.usernameService.getallUsers();
 	  }
 	
 	
@@ -55,7 +55,7 @@ public class UserController {
 		
 		public ResponseEntity<User> get(@PathVariable Integer id) {
 	        try {
-	            User user = usernameService.getUsers(id);
+	            User user = usernameService.getUsersbyid(id);
 	            return new ResponseEntity<User>(user, HttpStatus.OK);
 	        } catch (NoSuchElementException e) {
 	            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
@@ -65,6 +65,13 @@ public class UserController {
 		//return this.usernameService.getUsers(Long.parseLong(id));
 	//}
     
+	
+	@GetMapping("/status/{status}")
+	public List<User> get(@PathVariable Boolean status) {
+        return usernameService.getallUsersbystatus(status);
+    }
+	
+	
 	@PostMapping("/username")
 	public User addUser( @RequestBody User user) {
 		return this.usernameService.addUser(user);
@@ -78,7 +85,7 @@ public class UserController {
 		
 		public ResponseEntity<?> updateUser(@RequestBody User user, @PathVariable Integer id) {
 	        try {
-	            User existUser = usernameService.getUsers(id);
+	            User existUser = usernameService.getUsersbyid(id);
 	            user.setId(id);            
 	            usernameService.addUser(user);
 	            return new ResponseEntity<>(HttpStatus.OK);

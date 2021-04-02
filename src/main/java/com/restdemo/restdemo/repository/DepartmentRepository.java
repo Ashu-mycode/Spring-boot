@@ -1,7 +1,7 @@
 
 /*
  * we create DepartmentRepository interface using JPA
- * provide all features of mapping 
+ * provide all features of CRUD Operation of DepartmentController 
  * */
 
 package com.restdemo.restdemo.repository;
